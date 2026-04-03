@@ -1,0 +1,14 @@
+# Env files
+.env
+
+# Node modules
+/node_modules
+
+# Prisma generated client
+/node_modules/.prisma
+/generated/prisma
+
+# Logs (optional but recommended)
+npm-debug.log
+yarn-debug.log
+yarn-error.log

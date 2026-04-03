@@ -1,0 +1,58 @@
+// https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  VIEWER
+  ANALYST
+  ADMIN
+}
+
+enum UserStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum RecordType {
+  INCOME
+  EXPENSE
+}
+
+model User {
+  id        String     @id @default(uuid())
+  email     String     @unique
+  fullName  String
+  phone     String?
+  password  String
+  role      UserRole   @default(VIEWER)
+  status    UserStatus @default(ACTIVE)
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+
+  recordsCreated FinancialRecord[] @relation("CreatedBy")
+}
+
+model FinancialRecord {
+  id          String      @id @default(uuid())
+  amount      Decimal     @db.Decimal(14, 2)
+  type        RecordType
+  category    String
+  date        DateTime    @db.Date
+  notes       String?
+  deletedAt   DateTime?
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  createdById String
+  createdBy   User        @relation("CreatedBy", fields: [createdById], references: [id], onDelete: Restrict)
+
+  @@index([date])
+  @@index([type])
+  @@index([category])
+}
