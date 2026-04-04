@@ -12,12 +12,9 @@ const options = {
     },
     servers: [
       {
-        url: 'http://localhost:{port}',
-        description: 'Local development server',
-        variables: {
-          port: { default: '4000' },
-        },
-      },
+        url: 'https://zorvyn-finance-access-control-backend.onrender.com',
+        description: 'Production server'
+      }
     ],
     components: {
       securitySchemes: {
