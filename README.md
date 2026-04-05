@@ -43,13 +43,13 @@ npm run dev  # development (with auto-reload)
 npm start    # production
 ```
 
-Server runs on `http://localhost:4001` (or configured PORT)
+Server runs on `http://localhost:4000` (or configured PORT)
 
 ## 🔧 Environment Variables
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `PORT` | Server port | `4001` |
+| `PORT` | Server port | `4000` |
 | `DATABASE_URL` | PostgreSQL connection | `postgresql://user:pass@localhost:5432/zorvyn` |
 | `JWT_SECRET` | JWT signing key (use strong key!) | `your-32-char-secret-key-here` |
 | `NODE_ENV` | Environment | `development` or `production` |
@@ -73,7 +73,7 @@ Server runs on `http://localhost:4001` (or configured PORT)
 
 ### Register
 ```bash
-curl -X POST http://localhost:4001/api/auth/register \
+curl -X POST https://zorvyn-finance-access-control-backend.onrender.com/api/auth/register \
   -H "Content-Type: application/json" \
   -d '{
     "fullName": "John Doe",
@@ -84,7 +84,7 @@ curl -X POST http://localhost:4001/api/auth/register \
 
 ### Login
 ```bash
-curl -X POST http://localhost:4001/api/auth/login \
+curl -X POST https://zorvyn-finance-access-control-backend.onrender.com/api/auth/login \
   -H "Content-Type: application/json" \
   -d '{
     "email": "john@example.com",
@@ -94,16 +94,16 @@ curl -X POST http://localhost:4001/api/auth/login \
 
 ### Access Protected Endpoint
 ```bash
-curl -X GET http://localhost:4001/api/dashboard/summary \
+curl -X GET https://zorvyn-finance-access-control-backend.onrender.com/api/dashboard/summary \
   -H "Authorization: Bearer YOUR_JWT_TOKEN"
 ```
 
 ## 🌐 Live API & Swagger
 
-- **API Base**: http://localhost:4001 (development)
-- **Swagger Docs**: http://localhost:4001/api-docs
-- **Live API**: *[URL to be provided]*
-- **Live Swagger**: *[URL to be provided]*
+- **API Base**: https://zorvyn-finance-access-control-backend.onrender.com (development)
+- **Swagger Docs**: https://zorvyn-finance-access-control-backend.onrender.com/api-docs
+- **Live API**: https://zorvyn-finance-access-control-backend.onrender.com
+- **Live Swagger**: https://zorvyn-finance-access-control-backend.onrender.com/api-docs
 
 ⚠️ **Note**: Not all routes are documented in Swagger. Only important and critical endpoints are included in the API documentation.
 
